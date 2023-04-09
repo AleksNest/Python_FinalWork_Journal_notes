@@ -13,7 +13,7 @@ def add_note():
             Models.Note.Note.set_id(note)
     array_notes.append(note)
     wF.write_file(array_notes, 'a')
-    print("Заметка добавлена в журнал")
+    print("Заметка добавлена в журнал!")
 
 
 def show(txt):
@@ -21,14 +21,14 @@ def show(txt):
 
     if array_notes:
         if txt == "all":
-            print("Журнал заметок:")
+            print("ЖУРНАЛ ЗАМЕТОК:")
             for i in array_notes:
                 print(Models.Note.Note.map_note(i))
 
         elif txt == "ID":
             for i in array_notes:
                 print("ID: ", Models.Note.Note.get_id(i))
-            id = input("Введите id заметки\n")
+            id = input("\nВведите id заметки: ")
             flag = True
             for i in array_notes:
                 if id == Models.Note.Note.get_id(i):
@@ -38,7 +38,7 @@ def show(txt):
                 print("Нет такого ID")
 
         elif txt == "date":
-            date = input("введите дату в формате: dd.mm.yyyy:")
+            date = input("Введите дату в формате: dd.mm.yyyy: ")
             flag = True
             for i in array_notes:
                 date_note = str(Models.Note.Note.get_date(i))
@@ -48,39 +48,42 @@ def show(txt):
             if flag:
                 print("Нет такой даты")
         else:
-            print("Журнал заметок пустой")
+            print("Журнал заметок пустой!")
 
 
 def del_notes():
-    id = input("Введите ID удаляемой заметки:")
+    id = input("Введите ID удаляемой заметки: ")
     array_notes = lF.read_file()
     flag = False
+
     for i in array_notes:
         if id == Models.Note.Note.get_id(i):
             array_notes.remove(i)
             flag = True
+
     if flag:
-        print("Заметка с id: ", id, " успешно удалена")
+        wF.write_file(array_notes, 'a')
+        print("Заметка с id: ", id, " успешно удалена!")
     else:
         print("нет такого id")
 
 
 def change_note():
-    id = input("Введите ID изменяемой заметки:")
+    id = input("Введите ID изменяемой заметки: ")
     array_notes = lF.read_file()
     flag = True
     array_notes_new = []
     for i in array_notes:
         if id == Models.Note.Note.get_id(i):
-            i.title = input("измените  заголовок")
-            i.body = input("измените  описание")
+            i.title = input("измените  заголовок:\n")
+            i.body = input("измените  описание:\n")
             Models.Note.Note.set_date(i)
             logic = False
         array_notes_new.append(i)
 
     if flag:
         wF.write_file(array_notes_new, 'a')
-        print("Заметка с id: ", id, " успешно изменена")
+        print("Заметка с id: ", id, " успешно изменена!")
     else:
         print("нет такого id")
 
