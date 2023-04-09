@@ -4,7 +4,8 @@ import Controller.counter as counter
 
 
 class Note:
-    def __init__(self, id = str(counter.counter()),  title = "текст", body = "текст", date = str(datetime.now().strftime("%d.%m.%Y %H:%M:%S"))):
+    def __init__(self, id=str(counter.counter()), title="текст", body="текст",
+                 date=str(datetime.now().strftime("%d.%m.%Y %H:%M:%S"))):
         self.id = id
         self.title = title
         self.body = body
@@ -23,7 +24,7 @@ class Note:
         return note.date
 
     def set_id(note):
-        note.id = str(counter.counter())   #str(uuid.uuid1())[0:3]
+        note.id = str(counter.counter())
 
     def set_title(note):
         note.title = note
