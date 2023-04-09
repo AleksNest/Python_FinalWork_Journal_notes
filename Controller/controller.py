@@ -13,7 +13,8 @@ def start():
         elif user_input == '3':
             com.show("date")
         elif user_input == '4':
-            break
+            com.show("all")
+            com.change_note()
         elif user_input == '5':
             com.add_note()
         elif user_input == '6':
@@ -21,4 +22,4 @@ def start():
             com.del_notes()
         else:
             print("Программа Журнал заметок завершена")
-
+            break

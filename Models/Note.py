@@ -25,11 +25,11 @@ class Note:
     def set_id(note):
         note.id = str(counter.counter())   #str(uuid.uuid1())[0:3]
 
-    def set_title(note, title):
-        note.title = title
+    def set_title(note):
+        note.title = note
 
-    def set_body(note, body):
-        note.body = body
+    def set_body(note):
+        note.body = note
 
     def set_date(note):
         note.date = str(datetime.now().strftime("%d.%m.%Y %H:%M:%S"))
