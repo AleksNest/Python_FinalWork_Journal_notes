@@ -2,7 +2,7 @@ import Models.Note
 def read_file():
     try:
         array = []
-        file = open("notes.txt", "r", encoding='utf-8')
+        file = open("notes.csv", "r", encoding='utf-8')
         notes = file.read().strip().split("\n")
         for n in notes:
             split_n = n.split(';')
